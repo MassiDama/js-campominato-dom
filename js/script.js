@@ -3,9 +3,10 @@ const container = document.querySelector(".container");
 
 // riprendo la funzione creata sotto dove ho generato un array di numeri in ordine casuale
 const newArrNum = numArrRandom (1, 100, 16);
-console.log(newArrNum);
 
 let gameOver = false;
+
+let risultato = 0;
 
 const play = document.querySelector(".play");
 
@@ -20,7 +21,6 @@ play.addEventListener ("click",
 
             divElement.innerHTML = i;
 
-
             divElement.addEventListener ("click",
 
                     function(){
@@ -30,30 +30,26 @@ play.addEventListener ("click",
                             if (!newArrNum.includes(i)) {
 
                                 divElement.classList.add("clicked");
-                                console.log(i);
+                                risultato++;
         
                             } else {
 
                                 divElement.classList.add("mine");
-                                console.log(i);
+                                console.log("GAME OVER");
+
+                                console.log("I tuoi punti: " + risultato);
 
                                 gameOver = true;
                             }
-
-                        } 
-                                
-                       
+                        }  
                     }
             );
 
             container.append(divElement);
 
-
         }
         
     }
-
-    
 )
 
 
@@ -84,3 +80,6 @@ function numArrRandom (minNum, maxNum, lengthArr) {
 function numRandom(min, max) {
     return Math.floor(Math.random() * (max - min +1)) + min;
 }
+
+
+
