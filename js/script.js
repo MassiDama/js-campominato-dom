@@ -1,9 +1,11 @@
 // andiamo a dichiarare la costante container
 const container = document.querySelector(".container");
 
-// riprendo la funzione cerata sotto dove ho generato un array di numeri in ordine casuale
-const newArrNum = numArrRandom (1, 16, 16);
+// riprendo la funzione creata sotto dove ho generato un array di numeri in ordine casuale
+const newArrNum = numArrRandom (1, 100, 16);
 console.log(newArrNum);
+
+let gameOver = false;
 
 const play = document.querySelector(".play");
 
@@ -18,12 +20,29 @@ play.addEventListener ("click",
 
             divElement.innerHTML = i;
 
+
             divElement.addEventListener ("click",
 
                     function(){
+                            
+                        if (gameOver === false) {
 
-                        divElement.classList.add("clicked");
-                        console.log(i);
+                            if (!newArrNum.includes(i)) {
+
+                                divElement.classList.add("clicked");
+                                console.log(i);
+        
+                            } else {
+
+                                divElement.classList.add("mine");
+                                console.log(i);
+
+                                gameOver = true;
+                            }
+
+                        } 
+                                
+                       
                     }
             );
 
